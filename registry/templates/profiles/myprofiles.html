@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--Custom css ADD HERE-->
+    
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+  
+    <link rel="stylesheet" href="../../../static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+   
+  
+  </head>
+  <body>
+    
+  <div class="ui grid  inverted menu nav mb-7">
+    <div class="ui container">
+      <a href="{% url 'home' %}" class="item">
+          <h3>HEALTH REGISTRY</h3>
+      </a>
+  
+      <div class="right menu">
+          {% if user.is_authenticated %}
+   
+          
+              <a href="{% url 'profile' %}" class="item">
+                   {{ profile.user }}<i class="user icon"></i>
+              </a>
+  
+              <a href="/logout" class="ui item">
+                  Logout
+              </a>
+          {% else %}
+          <a href="/accounts/login" class="ui item">
+                  Login
+              </a>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- NEW NAVBAR -->
+
+
+<!-- MODAL -->
+<div class="ui modal mymodal">
+  <i class="close icon"></i>
+  <div class="header">
+      Update Your Profile
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img class="ui medium circular image" src="{{profile.avatar.url}}">
+    </div>
+    <div class="description">
+      <div class="ui header">Provide some additional info about you.</div>
+      <form class="ui form" action="" enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit" class="ui positive  button">Update</button>
+      </form>
+  </div>
+
+</div>
+</div>
+
+<!-- CONTENT -->
+<div class="ui container">
+
+<div class="ui grid">
+<div class="row">
+<div class="eight wide  column">
+<div class="ui raised segment">
+
+  {% if comfirm %}
+  <div class="ui green message">
+      <i class="close icon"></i>
+      <div class="header">
+        Updated.
+      </div>
+    </div>
+    {% endif %}
+
+  <h3>My Profile:</h3>
+  <div class="ui grid">
+  <div class="row">
+    <div class="six wide column">
+      <img class="ui small rounded image" src="{{profile.avatar.url}}"  alt="">
+      <div class="mt-5">
+        <button class="ui inverted  green button" id="modal-btn">Update Your profile</button>
+      </div>
+
+    </div>
+    <div class="ten wide column">
+      <table class="ui table">
+        <tbody>
+          <tr>
+            <td>username:</td>
+            <td>{{profile.username}}</td>
+          </tr>
+          <tr>
+            <td>Bio:</td>
+            <td>{{profile.bio}}</td>
+
+          </tr> 
+          <tr>
+            <td>Contact:</td>
+            <td>{{profile.contact}}</td>
+
+          </tr>      
+        </tbody>
+      </table>
+      </div>
+
+  </div>
+  </div>
+
+</div>
+</div>
+<!-- FORM -->
+
+<div class="eight wide  column">
+  <h3>Write a Report {{profile.username}}</h3>
+
+  <form action="" method="POST" class="ui form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{p_form.as_p}}
+    <div class="ui ">
+       <button type="submit" class="ui button positive">Add report</button>
+
+    </div>
+
+</form>
+
+  </div>
+
+</div>
+</div>
+
+
+
+<div class="ui center aligned basic segment">
+  
+  <div class="ui horizontal divider">
+    Reports
+      </div>
+      </div>
+
+        {% if not reports %}
+         <div class="ui raised center aligned  segment">
+          No Reports yet
+         </div>
+        {% else%}
+        
+      
+        <div class="ui equal width grid">
+          {% for report in reports %}
+          <div class="five wide column">
+  
+          <div class="ui raised segment">
+              <div class="image">
+                  <img class="ui image image__img" src="{{report.image.url}}" alt="">
+              </div>
+           
+              </div>
+          </div>
+  
+            {% endfor%}
+  
+          </div>
+
+        {% endif %}
+        
+        </div>
+        <script src="../../../static/js/script.js"></script>
+
+        </body>
+        </html>
