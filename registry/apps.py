@@ -6,4 +6,3 @@ class RegistryConfig(AppConfig):
     name = 'registry'
 
 
-        

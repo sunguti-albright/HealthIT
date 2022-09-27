@@ -1,1 +1,1 @@
-web: gunicorn registry.wsgi --log-file -
+web: gunicorn healthit.wsgi --log-file -

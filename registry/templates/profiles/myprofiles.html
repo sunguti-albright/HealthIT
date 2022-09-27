@@ -28,10 +28,16 @@
       <div class="right menu">
           {% if user.is_authenticated %}
    
-          
+<!--           
               <a href="{% url 'profile' %}" class="item">
                    {{ profile.user }}<i class="user icon"></i>
               </a>
+              -->
+
+              <a href="/profile/" class="item">
+                {{ profile.user }}<i class="user icon"></i>
+           </a>
+          
   
               <a href="/logout" class="ui item">
                   Logout
