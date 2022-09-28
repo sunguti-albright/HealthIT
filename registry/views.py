@@ -22,34 +22,34 @@ from rest_framework import status
 from .permissions import IsAdminOrReadOnly
 
 def profile(request):
-    profile = Profile.objects.get(user = request.user)
-    reports = Report.objects.filter(author=request.user).order_by('-created')
-    form = ProfileModelForm(request.POST or None ,request.FILES or None,instance = profile)
-    r_form = ReportModelForm(request.POST or None,request.FILES or None)
+    # profile = Profile.objects.get(user = request.user)
+    # reports = Report.objects.filter(author=request.user).order_by('-created')
+    # form = ProfileModelForm(request.POST or None ,request.FILES or None,instance = profile)
+    # r_form = ReportModelForm(request.POST or None,request.FILES or None)
 
-    comfirm = False
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            comfirm = True
+    # comfirm = False
+    # if request.method == 'POST':
+    #     if form.is_valid():
+    #         form.save()
+    #         comfirm = True
 
             
-    if r_form.is_valid():
-        instance = r_form.save(commit=False)
-        instance.author = request.user
-        instance.save()
-        return redirect('home')
-    r_form = ReportModelForm() 
+    # if r_form.is_valid():
+    #     instance = r_form.save(commit=False)
+    #     instance.author = request.user
+    #     instance.save()
+    #     return redirect('home')
+    # r_form = ReportModelForm() 
 
-    context = {
-        'profile':profile,
-        'form':form,
-        'comfirm':comfirm,
-        'reports':reports,
-        'r_form':r_form,
+    # context = {
+    #     'profile':profile,
+    #     'form':form,
+    #     'comfirm':comfirm,
+    #     'reports':reports,
+    #     'r_form':r_form,
 
 
-    }
+    # }
 
     return render(request,'profiles/myprofiles.html')
 
