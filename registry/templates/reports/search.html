@@ -3,8 +3,8 @@
 <div class="container">
 
   <div class="row text-center" style="margin-top: 100px;">
-    {% if reportss%}
-      <h2>Found {{ reports|length }} of searched term {{message}}</h2>
+    {% if reports%}
+      <h2>Found {{ reports|length }} report of searched term {{message}}</h2>
     {% else %}
       <h2> Found 0 reports for the search term {{message}}</h2>
     {% endif %}
@@ -26,9 +26,9 @@
                   <h6><span class="upper"> {{report.report_name}}</span></h6><br>
 
         
-                  <p class="float-end">{{post.created |date:"M d, Y"}}</p>
+                  <p class="float-end">{{report.created |date:"M d, Y"}}</p>
                  
-                  <p>By:<span class="upper fs-5"> {{post.author}}</span></p>
+                  <p>By:<span class="upper fs-5"> {{report.author}}</span></p>
               </div>
             </div>
       </div>

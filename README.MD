@@ -3,11 +3,9 @@
 #### Author: [Sunguti Albright](https://github.com/sunguti-albright)
 
 
-* Link to live site: [Awards](https://albrightawards.herokuapp.com/)
+* Link to live site: [HEALTH REGISTRY](https://albrighthealthregistry.herokuapp.com/)
 
-* Link to user profile JSON response: [PROFILES](https://albrightawards.herokuapp.com/api/profile)
 
-* Link to projects JSON response : [PROJECTS](https://albrightawards.herokuapp.com/api/report)
 
 ## Description
 An application where users can sign in, post their reports and view the registry
